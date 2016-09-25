@@ -1,3 +1,19 @@
+## Solution:
+
+
+Deployed on IBM Bluemix
+
+http://taskapp-angular.mybluemix.net/#/home
+
+Using Postgres as a persistence layer -- this is extension to the requirements.
+
+This is a typical Angular UI implementation with some parts jQuery and Bootstrap.
+
+The server is Node.js plus Express. 
+
+
+++++++++++++++++++
+
 ## Instructions
 
 Please read these instructions carefully and follow them the best you can. If you get stuck email us--there's a ```mailto:``` link at the bottom of these instructions to do that.
