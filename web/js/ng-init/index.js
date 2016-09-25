@@ -1,20 +1,18 @@
-var espApp = angular.module('taskapp', ['datatables', 'ui.router','ui.bootstrap']);
+var taskmodule = angular.module('taskapp', ['ui.router', 'ui.bootstrap']);
 
-    $('#container').show();
+taskmodule.config(function ($stateProvider, $urlRouterProvider) {
 
-    espApp.config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/home');
 
-        $urlRouterProvider.otherwise('/home');
-
-        $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: '/views/tasks.html'
-            })
-            .state('tasks', {
-                url: '/tasks',
-                templateUrl: '/views/tasks.html'
-            });
-    });
+    $stateProvider
+        .state('home', {
+            url: '/home',
+            templateUrl: '/views/tasks.html'
+        })
+        .state('tasks', {
+            url: '/tasks',
+            templateUrl: '/views/tasks.html'
+        });
+});
 
 
