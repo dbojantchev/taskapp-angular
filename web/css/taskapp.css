@@ -1,0 +1,47 @@
+
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+   // border-radius: 6px;
+}
+
+.container {
+    width: 100%;
+}
+
+.show-completed {
+    margin-top: 15px;
+}
+
+.show-completed input{
+    margin-left: 20px;
+}
+
+.completed {
+    text-decoration: line-through;
+    background-color: #ddd;
+    color: #aaa;
+}
+
+.sortIndicator{
+    margin-left:10px;
+}
+
+.task-header {
+}
+
+.task-header h3{
+    margin-top:16px;
+}
+
+.add-task-div {
+    margin-left:36%;
+    margin-top:10px;
+}
+
+#addTask label{
+    width:180px !important;
+}
+
+#addTask input{
+    width:240px !important;
+}

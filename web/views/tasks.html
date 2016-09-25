@@ -1,0 +1,99 @@
+<div data-ng-controller="taskController">
+
+    <div class="task-header">
+        <div class="pull-left">
+            <h3 class="pull-left">Tasks</h3>
+        </div>
+        <div class="add-task-div pull-left">
+            <button class="btn btn-default" ng-click="addTask()">Add Task</button>
+            </div>
+        <div class="pull-right show-completed">
+                <label>Show Completed</label>
+                <input type="checkbox" class="pull-right" ng-model="showCompleted" data-ng-change="toggleCompleted()">
+                </input>
+        </div>
+
+    </div>
+
+    <!-- Projects Row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+
+                <!-- TABLE -->
+
+                <table id="catalogTable" width="100%" class="order-column table  table-striped table-hover" cellspacing="0">
+                    <tr>
+                        <th><a href="javascript:void(0)" ng-click="sort('id')">Id</a>
+                            <span ng-class="sortDir === 'ASC' ? 'sortIndicator glyphicon glyphicon-circle-arrow-up': 'sortIndicator glyphicon glyphicon-circle-arrow-down' "
+                                  ng-show="sortCol === 'id'"></span>
+                        </th>
+                        <th><a href="javascript:void(0)" ng-click="sort('title')">Title</a>
+                            <span ng-class="sortDir === 'ASC' ? 'sortIndicator glyphicon glyphicon-circle-arrow-up': 'sortIndicator glyphicon glyphicon-circle-arrow-down' "
+                                  ng-show="sortCol === 'title'"></span>
+                        </th>
+                        <th><a href="javascript:void(0)" ng-click="sort('description')">Description</a>
+                            <span ng-class="sortDir === 'ASC' ? 'sortIndicator glyphicon glyphicon-circle-arrow-up': 'sortIndicator glyphicon glyphicon-circle-arrow-down' "
+                                  ng-show="sortCol === 'description'"></span>
+                        </th>
+                        <th><a href="javascript:void(0)" ng-click="sort('priority')">Priority</a>
+                            <span ng-class="sortDir === 'ASC' ? 'sortIndicator glyphicon glyphicon-circle-arrow-up': 'sortIndicator glyphicon glyphicon-circle-arrow-down' "
+                                  ng-show="sortCol === 'priority'"></span>
+                        </th>
+                        <th><a href="javascript:void(0)" ng-click="sort('create_dt')">Create Date</a>
+                            <span ng-class="sortDir === 'ASC' ? 'sortIndicator glyphicon glyphicon-circle-arrow-up': 'sortIndicator glyphicon glyphicon-circle-arrow-down' "
+                                  ng-show="sortCol === 'create_dt'"></span>
+                        </th>
+                        <th><a href="javascript:void(0)" ng-click="sort('status')">Status</a>
+                            <span ng-class="sortDir === 'ASC' ? 'sortIndicator glyphicon glyphicon-circle-arrow-up': 'sortIndicator glyphicon glyphicon-circle-arrow-down' "
+                                  ng-show="sortCol === 'status'"></span>
+                        </th>
+                        <th>Toggle Complete</th>
+                    </tr>
+                    <tr id="task{{task.id}}row" ng-class="{completed: task.status > 0 }" ng-show="task.status === 0 || showCompleted" ng-repeat="task in taskData">
+                        <td>{{ task.id }}</td>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description }}</td>
+                        <td style="text-align:center;">{{ task.priority }}</td>
+                        <td>{{ task.create_dt }}</td>
+                        <td>{{ (task.status === 0) ? 'Incomplete' : 'Complete' }} </td>
+                        <td><input id="showTasks{{task.id}}" type="checkbox" style="margin-left:30px;" ng-click="markComplete(task)"></td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addTask" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#006d9d">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:#fff"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading" style="color:#fff">Add Task</h4>
+                </div>
+                <div class="modal-body">
+                    <form accept-charset="UTF-8" role="form">
+                        <div>
+                            <label class="radio-inline">Title</label>
+                            <input type="text" ng-model="newTask.title" placeholder="Title">
+                        </div>
+                        <div>
+                            <label class="radio-inline">Description</label>
+                            <input type="text" ng-model="newTask.description" placeholder="Description">
+                        </div>
+                        <div>
+                            <label class="radio-inline">Priority (numeric)</label>
+                            <input type="number" ng-model="newTask.priority" placeholder="Length">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" ng-click="saveTask()" class="btn btn-default"  ><span class="glyphicon glyphicon-ok" style="color:#7fb741"></span> Ok </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
