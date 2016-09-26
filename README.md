@@ -9,7 +9,7 @@ Using Postgres as a persistence layer -- this is extension to the requirements.
 
 This is a typical Angular UI implementation with some parts jQuery and Bootstrap.
 
-The server is Node.js plus Express. 
+The server is Node.js plus Express.
 
 
 ++++++++++++++++++
